@@ -2,19 +2,58 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui>
+	xmlns:p="http://primefaces.org/ui">
 	
 	<h:head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
 	</h:head>
 	<h:body>
-		<h:form>
-			<h:inputText value="#{navigator.id}" />
+	<h:form>  
+    	<p:growl id="messages"/>
+	    <p:menubar>
+	        <p:submenu label="Products" icon="ui-icon-document">
+	          	<p:menuitem value="Create new product" url="#" icon="ui-icon-pencil"/>
+	            <p:menuitem value="Edit" url="#" icon="ui-icon-pencil"/>
+	            <p:menuitem value="Consult" url="#" icon="ui-icon-search"/>
+	            <p:menuitem value="Remove" url="#" icon="ui-icon-trash"/>  
+	        </p:submenu>
+	        <p:separator />
+	        <p:menuitem value="Quit" url="#" />
+	        
+	        <p:submenu label="Shelves" icon="ui-icon-document">
+	           <p:menuitem value="Create new product" url="#" icon="ui-icon-pencil"/>
+	                <p:menuitem value="Create new shelf" url="#" icon="ui-icon-pencil"/>
+	                <p:menuitem value="Edit" url="#" icon="ui-icon-pencil"/>
+	                <p:menuitem value="Consult" url="#" icon="ui-icon-search"/>
+	                <p:menuitem value="Remove" url="#" icon="ui-icon-trash"/>  
+	        </p:submenu>
+	        <p:separator/>
+	        <p:menuitem value="Quit" url="#" />
+	    	
+  		</p:menubar>
+	</h:form>
+	<h:form>
+	<!-- esta tabela é DataExporter -->
+	    <p:dataTable id="tbl" var="car" value="#{dataExporterView.cars}"
+	                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
+	                 paginator="true" rows="10" style="margin-bottom:20px">
+	 
+	        <f:facet name="{Exporters}">
+	            <h:commandLink>
+	                <p:graphicImage name="/demo/images/excel.png" width="24"/>
+	                <p:dataExporter type="pdf" target="tbl" fileName="cars" />
+	            </h:commandLink>
+	    </f:facet>
+		</p:dataTable>
+	</h:form>
+	
+		<!-- <h:form>
+			<h:inputText value="#{navigator.name}" />
 			<p:selectOneRadio value="#{navigator.disabled}" >
 				<f:selectItem itemValue="true" itemLabel="Disabled" />
 				<f:selectItem itemValue="false" itemLabel="Enabled" />
 			</p:selectOneRadio>
 			<h:commandButton value="Say Hello" action="result" />
-		</h:form>
+		</h:form> -->
 	</h:body>
 </html>
