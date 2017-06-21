@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
 	xmlns:p="http://primefaces.org/ui">
 	
 	<h:head>
@@ -17,43 +18,34 @@
 	            <p:menuitem value="Consult" url="#" icon="ui-icon-search"/>
 	            <p:menuitem value="Remove" url="#" icon="ui-icon-trash"/>  
 	        </p:submenu>
-	        <p:separator />
-	        <p:menuitem value="Quit" url="#" />
 	        
 	        <p:submenu label="Shelves" icon="ui-icon-document">
-	           <p:menuitem value="Create new product" url="#" icon="ui-icon-pencil"/>
 	                <p:menuitem value="Create new shelf" url="#" icon="ui-icon-pencil"/>
 	                <p:menuitem value="Edit" url="#" icon="ui-icon-pencil"/>
 	                <p:menuitem value="Consult" url="#" icon="ui-icon-search"/>
 	                <p:menuitem value="Remove" url="#" icon="ui-icon-trash"/>  
 	        </p:submenu>
-	        <p:separator/>
-	        <p:menuitem value="Quit" url="#" />
-	    	
   		</p:menubar>
 	</h:form>
-	<h:form>
-	<!-- esta tabela é DataExporter -->
-	    <p:dataTable id="tbl" var="car" value="#{dataExporterView.cars}"
-	                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
-	                 paginator="true" rows="10" style="margin-bottom:20px">
-	 
-	        <f:facet name="{Exporters}">
-	            <h:commandLink>
-	                <p:graphicImage name="/demo/images/excel.png" width="24"/>
-	                <p:dataExporter type="pdf" target="tbl" fileName="cars" />
-	            </h:commandLink>
-	    </f:facet>
-		</p:dataTable>
-	</h:form>
 	
-		<!-- <h:form>
-			<h:inputText value="#{navigator.name}" />
-			<p:selectOneRadio value="#{navigator.disabled}" >
-				<f:selectItem itemValue="true" itemLabel="Disabled" />
-				<f:selectItem itemValue="false" itemLabel="Enabled" />
-			</p:selectOneRadio>
-			<h:commandButton value="Say Hello" action="result" />
-		</h:form> -->
+		<p:dataTable id="ProductList" var="product" value="#{dtProductView.products}">
+	    	<f:facet name="header">	List of Products </f:facet>
+	    	<p:column headerText="Id">
+	        	<h:outputText value="#{product.id}" />
+	    	</p:column>
+	    	<p:column headerText="Discount">
+	        	<h:outputText value="#{product.discount}" />
+	    	</p:column>
+	   		<p:column headerText="Tax">
+	        	<h:outputText value="#{product.tax}" />
+	    	</p:column>
+	    	<p:column headerText="Price">
+	        	<h:outputText value="#{product.price}" />
+	    	</p:column>
+	    	<f:facet name="footer"> In total there are #{fn:length(dtProductView.products)} products. </f:facet>
+	    	
+		</p:dataTable>	
+	
+		
 	</h:body>
 </html>

@@ -8,6 +8,7 @@ public class Product extends Entity {
 		private float discount;
 		private float tax;
 		private float saleprice;
+		private ProductRepository ProductRepository = new ProductRepository();
 		
 		public Integer getId() {
 			return id;
@@ -37,11 +38,11 @@ public class Product extends Entity {
 
 	
 		public Product(Integer id, float discount, float tax, float saleprice) {
-			//this.id = id;
+			this.id = id;
 			this.discount = discount;
 			this.tax = tax;
 			this.saleprice = saleprice;
-			ProductRepository.getInstance().addToList(this);
+			ProductRepository.addToList(this);
 		}
 		
 	

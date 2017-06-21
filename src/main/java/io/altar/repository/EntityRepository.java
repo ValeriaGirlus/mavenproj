@@ -11,6 +11,7 @@ public abstract class EntityRepository<E extends Entity>{
 	
 	
 	private LinkedHashMap<Integer, Entity> entityList = new LinkedHashMap<>();
+		
 		private static Integer id = 0;
 		public static Integer getNextId(){
 			return ++id;
@@ -25,18 +26,14 @@ public abstract class EntityRepository<E extends Entity>{
 			entityList.remove(id);
 		}
 		
-		//se a lista,quer dos products ou shelves, estiver vazia, retorna vazio
 		public boolean isEmpty(){
 			return entityList.isEmpty();
 		}
 
-		//nao percebo muito bem isto
 		public Set<Integer> keySet(){
 			return entityList.keySet();
 		}
 		
-		
-		//nao percebo muito bem isto
 		public Entity get(Integer id){
 			return entityList.get(id);
 		}	
