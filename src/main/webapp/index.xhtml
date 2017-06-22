@@ -27,7 +27,7 @@
 	        </p:submenu>
   		</p:menubar>
 	</h:form>
-	
+	<h:form> 
 		<p:dataTable id="ProductList" var="product" value="#{dtProductView.products}">
 	    	<f:facet name="header">	List of Products </f:facet>
 	    	<p:column headerText="Id">
@@ -40,12 +40,28 @@
 	        	<h:outputText value="#{product.tax}" />
 	    	</p:column>
 	    	<p:column headerText="Price">
-	        	<h:outputText value="#{product.price}" />
+	        	<h:outputText value="#{product.salePrice}" />
 	    	</p:column>
 	    	<f:facet name="footer"> In total there are #{fn:length(dtProductView.products)} products. </f:facet>
-	    	
 		</p:dataTable>	
-	
-		
+	</h:form>
+	<h:form>	
+		<p:dataTable id="ShelfList" var="shelf" value="#{dtShelfView.shelves}">
+	    	<f:facet name="header">	List of Shelves </f:facet>
+	    	<p:column headerText="Id">
+	        	<h:outputText value="#{shelf.id}" />
+	    	</p:column>
+	    	<p:column headerText="Location">
+	        	<h:outputText value="#{shelf.location}" />
+	    	</p:column>
+	   		<p:column headerText="Capacity">
+	        	<h:outputText value="#{shelf.capacity}" />
+	    	</p:column>
+	    	<p:column headerText="Price">
+	        	<h:outputText value="#{shelf.price}" />
+	    	</p:column>
+	    	<f:facet name="footer"> In total there are #{fn:length(dtShelfView.shelves)} shelves. </f:facet>
+		</p:dataTable>
+	</h:form>	
 	</h:body>
 </html>

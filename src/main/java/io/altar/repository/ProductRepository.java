@@ -5,14 +5,16 @@ import io.altar.repository.ProductRepository;
 import io.altar.model.Product;
 
 public class ProductRepository extends EntityRepository<Product>{
+
+	public ProductRepository(){};
 	
-	//private static final ProductRepository INSTANCE = new ProductRepository();
-	
-	public ProductRepository(){}
-	
-//	public static ProductRepository getInstance(){
-//		return INSTANCE;
-//	}
+	public void editItem(Integer id, float discount, float tax, float saleprice){
+		
+		((Product) get(id)).setId(id);
+		((Product) get(id)).setDiscount(discount);
+		((Product) get(id)).setTax(tax);
+		((Product) get(id)).setSalePrice(saleprice);
+	}
 	
 	public void editdiscount(Integer id, float discount){
 		((Product) get(id)).setDiscount(discount);

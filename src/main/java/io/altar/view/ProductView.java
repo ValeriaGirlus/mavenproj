@@ -1,6 +1,7 @@
 package io.altar.view;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -14,19 +15,18 @@ import io.altar.services.ProductService;
 @ManagedBean(name="dtProductView")
 @ViewScoped
 public class ProductView implements Serializable {
-     
-    private List<Product> products;
-     
+	private static final long serialVersionUID = 1L;
+
     @ManagedProperty("#{productService}")
     private ProductService productService;
  
     @PostConstruct
     public void init() {
-        products = productService.createProducts();
+        productService.createProducts();
     }
      
-    public List<Product> getProducts() {
-        return products;
+    public Collection<Product> getProducts() {
+        return productService.getProducts();
     }
  
     public void setProductService(ProductService productService) {

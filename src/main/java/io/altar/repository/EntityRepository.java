@@ -1,5 +1,6 @@
 package io.altar.repository;
 
+import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Set;
 
@@ -10,14 +11,14 @@ public abstract class EntityRepository<E extends Entity>{
 
 	
 	
-	private LinkedHashMap<Integer, Entity> entityList = new LinkedHashMap<>();
+	private LinkedHashMap<Integer, E> entityList = new LinkedHashMap<>();
 		
 		private static Integer id = 0;
 		public static Integer getNextId(){
 			return ++id;
 		}
 		
-		public void addToList(Entity e){
+		public void addToList(E e){
 			e.setId(id);
 			entityList.put(e.getId(),e);
 		}
@@ -40,6 +41,10 @@ public abstract class EntityRepository<E extends Entity>{
 			
 		public boolean containsKey(int key){
 			return entityList.containsKey(key);
+		}
+
+		public Collection<E> getall(){
+			return entityList.values();
 		}
 		
 }
