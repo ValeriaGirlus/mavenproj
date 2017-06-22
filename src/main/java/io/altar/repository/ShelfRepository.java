@@ -6,31 +6,25 @@ import io.altar.model.Shelf;
 
 public class ShelfRepository extends EntityRepository<Shelf>{
 	
-	private static final ShelfRepository INSTANCE = new ShelfRepository();
+	public ShelfRepository(){}
 	
-	private ShelfRepository(){}
-	
-	public static ShelfRepository getInstance(){
-		return INSTANCE;
+	public void editItem(Integer id, int location, int capacity, float price){
+		
+		((Shelf) get(id)).setId(id);
+		((Shelf) get(id)).setLocation(location);
+		((Shelf) get(id)).setCapacity(capacity);
+		((Shelf) get(id)).setPrice(price);
 	}
 	
-	public static void editItem(Integer id, int location, int capacity, float price){
-		//(casting) vai buscar o id ao EntityRepository 
-		((Shelf)ShelfRepository.getInstance().get(id)).setId(id);
-		((Shelf)ShelfRepository.getInstance().get(id)).setLocation(location);
-		((Shelf)ShelfRepository.getInstance().get(id)).setCapacity(capacity);
-		((Shelf)ShelfRepository.getInstance().get(id)).setPrice(price);
+	public void editlocation(Integer id, int location){
+		((Shelf) get(id)).setLocation(location);
 	}
 	
-	public static void editlocation(Integer id, int location){
-		((Shelf)ShelfRepository.getInstance().get(id)).setLocation(location);
+	public void editcapacity(Integer id, int capacity){
+		((Shelf) get(id)).setCapacity(capacity);
 	}
 	
-	public static void editcapacity(Integer id, int capacity){
-		((Shelf)ShelfRepository.getInstance().get(id)).setCapacity(capacity);
-	}
-	
-	public static void editprice(Integer id, float price){
-		((Shelf)ShelfRepository.getInstance().get(id)).setPrice(price);
+	public void editprice(Integer id, float price){
+		((Shelf) get(id)).setPrice(price);
 	}
 }
