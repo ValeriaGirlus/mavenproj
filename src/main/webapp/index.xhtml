@@ -14,59 +14,61 @@
 			<ui:define name="content">
 	    			<h2>This is page1 content</h2>
 	    		<h:form>  
-    			<p:growl id="messages"/>
-	    			<p:menubar>
-	        			<p:submenu label="Products" icon="ui-icon-document">
-				          	<p:menuitem value="Create new product" url="#" icon="ui-icon-pencil"/>
-				            <p:menuitem value="Edit" url="#" icon="ui-icon-pencil"/>
-				            <p:menuitem value="Consult" url="#" icon="ui-icon-search"/>
-				            <p:menuitem value="Remove" url="#" icon="ui-icon-trash"/>  
-	        			</p:submenu>
-	        
-				        <p:submenu label="Shelves" icon="ui-icon-document">
-				                <p:menuitem value="Create new shelf" url="#" icon="ui-icon-pencil"/>
-				                <p:menuitem value="Edit" url="#" icon="ui-icon-pencil"/>
-				                <p:menuitem value="Consult" url="#" icon="ui-icon-search"/>
-				                <p:menuitem value="Remove" url="#" icon="ui-icon-trash"/>  
-				        </p:submenu>
-  					</p:menubar>
+		    		<p:growl id="messages"/>
+			    		<p:menubar>
+			        		<p:submenu label="Products" icon="ui-icon-document">
+						    	<p:menuitem value="Create new product" url="#" icon="ui-icon-pencil"/>
+						        <p:menuitem value="Edit" url="#" icon="ui-icon-pencil"/>
+						        <p:menuitem value="Consult" url="#" icon="ui-icon-search"/>
+						        <p:menuitem value="Remove" url="#" icon="ui-icon-trash"/>  
+			        		</p:submenu>
+						    <p:submenu label="Shelves" icon="ui-icon-document">
+						         <p:menuitem value="Create new shelf" url="#" icon="ui-icon-pencil"/>
+						         <p:menuitem value="Edit" url="#" icon="ui-icon-pencil"/>
+						         <p:menuitem value="Consult" url="#" icon="ui-icon-search"/>
+						         <p:menuitem value="Remove" url="#" icon="ui-icon-trash"/>  
+						    </p:submenu>
+		  				</p:menubar>
 				</h:form>
-				
-				<h:form> s
-					<p:dataTable id="ProductList" var="product" value="#{dtProductView.products}">
-				    	<f:facet name="header">	List of Products </f:facet>
-				    	<p:column headerText="Id">
-				        	<h:outputText value="#{product.id}" />
-				    	</p:column>
-				    	<p:column headerText="Discount">
-				        	<h:outputText value="#{product.discount}" />
-				    	</p:column>
-				   		<p:column headerText="Tax">
-				        	<h:outputText value="#{product.tax}" />
-				    	</p:column>
-				    	<p:column headerText="Price">
-				        	<h:outputText value="#{product.salePrice}" />
-				    	</p:column>
-				    	<f:facet name="footer"> In total there are #{fn:length(dtProductView.products)} products. </f:facet>
-					</p:dataTable>	
-				</h:form>
-				<h:form>	
-					<p:dataTable id="ShelfList" var="shelf" value="#{dtShelfView.shelves}">
-				    	<f:facet name="header">	List of Shelves </f:facet>
-				    	<p:column headerText="Id">
-				        	<h:outputText value="#{shelf.id}" />
-				    	</p:column>
-				    	<p:column headerText="Location">
-				        	<h:outputText value="#{shelf.location}" />
-				    	</p:column>
-				   		<p:column headerText="Capacity">
-				        	<h:outputText value="#{shelf.capacity}" />
-				    	</p:column>
-				    	<p:column headerText="Price">
-				        	<h:outputText value="#{shelf.price}" />
-				    	</p:column>
-				    	<f:facet name="footer"> In total there are #{fn:length(dtShelfView.shelves)} shelves. </f:facet>
-					</p:dataTable>
+				<h:form> 
+					<p:tabView>
+			    		<p:tab title="Products"> 
+							<p:dataTable id="ProductList" var="product" value="#{dtProductView.products}">
+						    	<f:facet name="header">	List of Products </f:facet>
+						    	<p:column headerText="Id">
+						        	<h:outputText value="#{product.id}" />
+						    	</p:column>
+						    	<p:column headerText="Discount">
+						        	<h:outputText value="#{product.discount}" />
+						    	</p:column>
+						   		<p:column headerText="Tax">
+						        	<h:outputText value="#{product.tax}" />
+						    	</p:column>
+						    	<p:column headerText="Price">
+						        	<h:outputText value="#{product.salePrice}" />
+						    	</p:column>
+						    	<f:facet name="footer"> In total there are #{fn:length(dtProductView.products)} products. </f:facet>
+							</p:dataTable>
+						</p:tab>	
+			    		<p:tab title="Shelves"> 	
+							<p:dataTable id="ShelfList" var="shelf" value="#{dtShelfView.shelves}">
+						    	<f:facet name="header">	List of Shelves </f:facet>
+						    	<p:column headerText="Id">
+						        	<h:outputText value="#{shelf.id}" />
+						    	</p:column>
+						    	<p:column headerText="Location">
+						        	<h:outputText value="#{shelf.location}" />
+						    	</p:column>
+						   		<p:column headerText="Capacity">
+						        	<h:outputText value="#{shelf.capacity}" />
+						    	</p:column>
+						    	<p:column headerText="Price">
+						        	<h:outputText value="#{shelf.price}" />
+						    	</p:column>
+						    	<f:facet name="footer"> In total there are #{fn:length(dtShelfView.shelves)} shelves. </f:facet>
+							</p:dataTable>
+						</p:tab>
+	  				</p:tabView>
 				</h:form>	
 	    	</ui:define>
 		</ui:composition>
