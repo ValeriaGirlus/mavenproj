@@ -16,7 +16,6 @@ public class Product extends Entity {
 		public void setId(Integer id) {
 			this.id = id;
 		}
-		
 		public float getDiscount() {
 			return discount;
 		}
@@ -37,12 +36,8 @@ public class Product extends Entity {
 		}
 
 	
-		public Product(Integer id, float discount, float tax, float saleprice) {
-			this.id = id;
-			this.discount = discount;
-			this.tax = tax;
-			this.saleprice = saleprice;
-			ProductRepository.addToList(this);
+		public Product() {
+			//ProductRepository.addToList(this);
 		}
 		
 	

@@ -12,25 +12,8 @@
 	<h:body>
 		<ui:composition template="commonLayout.xhtml">
 			<ui:define name="content">
-	    			<h2>This is page1 content</h2>
-	    		<h:form>  
-		    		<p:growl id="messages"/>
-			    		<p:menubar>
-			        		<p:submenu label="Products" icon="ui-icon-document">
-						    	<p:menuitem value="Create new product" url="#" icon="ui-icon-pencil"/>
-						        <p:menuitem value="Edit" url="#" icon="ui-icon-pencil"/>
-						        <p:menuitem value="Consult" url="#" icon="ui-icon-search"/>
-						        <p:menuitem value="Remove" url="#" icon="ui-icon-trash"/>  
-			        		</p:submenu>
-						    <p:submenu label="Shelves" icon="ui-icon-document">
-						         <p:menuitem value="Create new shelf" url="#" icon="ui-icon-pencil"/>
-						         <p:menuitem value="Edit" url="#" icon="ui-icon-pencil"/>
-						         <p:menuitem value="Consult" url="#" icon="ui-icon-search"/>
-						         <p:menuitem value="Remove" url="#" icon="ui-icon-trash"/>  
-						    </p:submenu>
-		  				</p:menubar>
-				</h:form>
-				<h:form> 
+	    			<h2>Products and Shelves content</h2>
+				<h:form > 
 					<p:tabView>
 			    		<p:tab title="Products"> 
 							<p:dataTable id="ProductList" var="product" value="#{dtProductView.products}">
@@ -69,6 +52,19 @@
 							</p:dataTable>
 						</p:tab>
 	  				</p:tabView>
+				</h:form>
+				<h:form>
+					<p:growl id="Product" showDetail="true" sticky="true" />  
+				    <p:panel header="Add product">  
+				        <h:panelGrid columns="2" cellpadding="5">  
+				            <p:outputLabel for="msg" value="Id:" />   
+				            <p:inputText id="msg" value="#{View.message}"/>  
+				        </h:panelGrid>  
+				 
+				        <p:commandButton value="Save" actionListener="#{growlView.saveMessage}" update="growl" />  
+				    </p:panel> 
+				
+				
 				</h:form>	
 	    	</ui:define>
 		</ui:composition>

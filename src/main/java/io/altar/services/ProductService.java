@@ -3,21 +3,36 @@ package io.altar.services;
 import java.util.Collection;
 
 import javax.enterprise.context.RequestScoped;
-import javax.faces.bean.ManagedBean;
+import javax.inject.Named;
+
 import io.altar.model.Product;
 import io.altar.repository.ProductRepository;
  
-@ManagedBean(name = "productService")
+@Named("productService")
 @RequestScoped
+
 
 public class ProductService {
 	private ProductRepository ProductList = new ProductRepository();
+
+	public void addNewProduct(Product product){
+		ProductList.addToList(product);
+	}
+
+	public void editProduct(){
+		
+	}
 	
-	public void createProducts() {
-		ProductList.addToList(new Product(2,2,3,4));
+	public void consultProduct(){
+			
+	}
+	
+	public void removeProduct(){
+		
 	}
 	
 	public Collection<Product> getProducts(){
 		return ProductList.getall();
 	}
+	
 }
