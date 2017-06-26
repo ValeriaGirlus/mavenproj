@@ -13,59 +13,73 @@
 		<ui:composition template="commonLayout.xhtml">
 			<ui:define name="content">
 	    			<h2>Products and Shelves content</h2>
-				<h:form > 
-					<p:tabView>
-			    		<p:tab title="Products"> 
-							<p:dataTable id="ProductList" var="product" value="#{dtProductView.products}">
-						    	<f:facet name="header">	List of Products </f:facet>
-						    	<p:column headerText="Id">
-						        	<h:outputText value="#{product.id}" />
-						    	</p:column>
-						    	<p:column headerText="Discount">
-						        	<h:outputText value="#{product.discount}" />
-						    	</p:column>
-						   		<p:column headerText="Tax">
-						        	<h:outputText value="#{product.tax}" />
-						    	</p:column>
-						    	<p:column headerText="Price">
-						        	<h:outputText value="#{product.salePrice}" />
-						    	</p:column>
-						    	<f:facet name="footer"> In total there are #{fn:length(dtProductView.products)} products. </f:facet>
-							</p:dataTable>
-						</p:tab>	
-			    		<p:tab title="Shelves"> 	
-							<p:dataTable id="ShelfList" var="shelf" value="#{dtShelfView.shelves}">
-						    	<f:facet name="header">	List of Shelves </f:facet>
-						    	<p:column headerText="Id">
-						        	<h:outputText value="#{shelf.id}" />
-						    	</p:column>
-						    	<p:column headerText="Location">
-						        	<h:outputText value="#{shelf.location}" />
-						    	</p:column>
-						   		<p:column headerText="Capacity">
-						        	<h:outputText value="#{shelf.capacity}" />
-						    	</p:column>
-						    	<p:column headerText="Price">
-						        	<h:outputText value="#{shelf.price}" />
-						    	</p:column>
-						    	<f:facet name="footer"> In total there are #{fn:length(dtShelfView.shelves)} shelves. </f:facet>
-							</p:dataTable>
-						</p:tab>
-	  				</p:tabView>
-				</h:form>
-				<h:form>
-					<p:growl id="Product" showDetail="true" sticky="true" />  
-				    <p:panel header="Add product">  
-				        <h:panelGrid columns="2" cellpadding="5">  
-				            <p:outputLabel for="msg" value="Id:" />   
-				            <p:inputText id="msg" value="#{View.message}"/>  
-				        </h:panelGrid>  
-				 
-				        <p:commandButton value="Save" actionListener="#{growlView.saveMessage}" update="growl" />  
-				    </p:panel> 
+						<h:form>
+							<p:tabView>
+							<!-- https://www.primefaces.org/showcase/ui/input/inplace.xhtml -->
+								<p:tab title="Add product ">
+				 					<h:panelGrid columns="2" columnClasses="column" cellpadding="5">
+				      						
+				      						<h:outputLabel for="discount" value="Discount:" />
+								        <p:inplace id="discount" editor="true">
+								            <p:inputText value="#{ProductView.product.discount}" required="true" label="product" />
+								        </p:inplace>
+
+								        	<h:outputLabel for="tax" value="Tax:" />
+								        <p:inplace id="tax" editor="true">
+								            <p:inputText value="#{ProductView.product.tax}" required="true" label="product" />
+								        </p:inplace>
+								        
+								        	<h:outputLabel for="saleprice" value="Price:" />
+								        <p:inplace id="saleprice" editor="true">
+								            <p:inputText value="#{ProductView.product.saleprice}" required="true" label="product" />
+								        </p:inplace>
+								        
+									</h:panelGrid>
+								</p:tab>
+							</p:tabView>
+						</h:form>
 				
-				
-				</h:form>	
+						<h:form > 
+							<p:tabView>
+								<p:tab title="Products">				
+									<p:dataTable id="ProductList" var="product" value="#{dtProductView.getProducts}">
+								    	<f:facet name="header">	List of Products </f:facet>
+								    	<p:column headerText="Id">
+								        	<h:outputText value="#{product.id}" />
+								    	</p:column>
+								    	<p:column headerText="Discount">
+								        	<h:outputText value="#{product.discount}" />
+								    	</p:column>
+								   		<p:column headerText="Tax">
+								        	<h:outputText value="#{product.tax}" />
+								    	</p:column>
+								    	<p:column headerText="Price">
+								        	<h:outputText value="#{product.salePrice}" />
+								    	</p:column>
+								    	<f:facet name="footer"> In total there are #{fn:length(dtProductView.getProducts)} products. </f:facet>
+									</p:dataTable>
+								</p:tab>
+		
+					    		<p:tab title="Shelves"> 	
+									<p:dataTable id="ShelfList" var="shelf" value="#{dtShelfView.shelves}">
+								    	<f:facet name="header">	List of Shelves </f:facet>
+								    	<p:column headerText="Id">
+								        	<h:outputText value="#{shelf.id}" />
+								    	</p:column>
+								    	<p:column headerText="Location">
+								        	<h:outputText value="#{shelf.location}" />
+								    	</p:column>
+								   		<p:column headerText="Capacity">
+								        	<h:outputText value="#{shelf.capacity}" />
+								    	</p:column>
+								    	<p:column headerText="Price">
+								        	<h:outputText value="#{shelf.price}" />
+								    	</p:column>
+								    	<f:facet name="footer"> In total there are #{fn:length(dtShelfView.shelves)} shelves. </f:facet>
+									</p:dataTable>
+								</p:tab>
+			  				</p:tabView>
+						</h:form>	
 	    	</ui:define>
 		</ui:composition>
 	</h:body>

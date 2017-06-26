@@ -37,6 +37,4 @@ public class ProductView implements Serializable {
     public void addProduct(){
     	productService.addNewProduct(product);
     }
- 
-
 }
