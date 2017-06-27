@@ -4,18 +4,18 @@ import io.altar.repository.ShelfRepository;
 import io.altar.model.Entity;
 
 public class Shelf extends Entity{
-	private int shelfId;
+//	private int shelfId;
 	private int location;
 	private int capacity;
 	private float price;
-	private ShelfRepository ShelfRepository = new ShelfRepository();
+//	private ShelfRepository ShelfRepository = new ShelfRepository();
 	
-	public int getShelfId() {
-		return shelfId;
-	}
-	public void setShelfId(int shelfId) {
-		this.shelfId = shelfId;
-	}
+//	public int getShelfId() {
+//		return shelfId;
+//	}
+//	public void setShelfId(int shelfId) {
+//		this.shelfId = shelfId;
+//	}
 	
 	public int getLocation() {
 		return location;
@@ -36,12 +36,12 @@ public class Shelf extends Entity{
 		this.price = price;
 	}
 	
-	public Shelf(int shelfId, int location, int capacity, float price) {
-		this.shelfId = shelfId;
-		this.location = location;
-		this.capacity = capacity;
-		this.price = price;
-		ShelfRepository.addToList(this);
+	public Shelf() {
+//		this.shelfId = shelfId;
+//		this.location = location;
+//		this.capacity = capacity;
+//		this.price = price;
+//		ShelfRepository.addToList(this);
 	}
 	
 	@Override

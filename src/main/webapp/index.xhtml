@@ -12,37 +12,11 @@
 	<h:body>
 		<ui:composition template="commonLayout.xhtml">
 			<ui:define name="content">
-	    			<h2>Products and Shelves content</h2>
-						<h:form>
-							<p:tabView>
-							<!-- https://www.primefaces.org/showcase/ui/input/inplace.xhtml -->
-								<p:tab title="Add product ">
-				 					<h:panelGrid columns="2" columnClasses="column" cellpadding="5">
-				      						
-				      						<h:outputLabel for="discount" value="Discount:" />
-								        <p:inplace id="discount" editor="true">
-								            <p:inputText value="#{ProductView.product.discount}" required="true" label="product" />
-								        </p:inplace>
-
-								        	<h:outputLabel for="tax" value="Tax:" />
-								        <p:inplace id="tax" editor="true">
-								            <p:inputText value="#{ProductView.product.tax}" required="true" label="product" />
-								        </p:inplace>
-								        
-								        	<h:outputLabel for="saleprice" value="Price:" />
-								        <p:inplace id="saleprice" editor="true">
-								            <p:inputText value="#{ProductView.product.saleprice}" required="true" label="product" />
-								        </p:inplace>
-								        
-									</h:panelGrid>
-								</p:tab>
-							</p:tabView>
-						</h:form>
-				
-						<h:form > 
+	    			<h2></h2>
+						<h:form >
 							<p:tabView>
 								<p:tab title="Products">				
-									<p:dataTable id="ProductList" var="product" value="#{dtProductView.getProducts}">
+									<p:dataTable id="ProductList" var="product" value="#{ProductView.getProducts()}">
 								    	<f:facet name="header">	List of Products </f:facet>
 								    	<p:column headerText="Id">
 								        	<h:outputText value="#{product.id}" />
@@ -56,12 +30,44 @@
 								    	<p:column headerText="Price">
 								        	<h:outputText value="#{product.salePrice}" />
 								    	</p:column>
-								    	<f:facet name="footer"> In total there are #{fn:length(dtProductView.getProducts)} products. </f:facet>
+								    	<f:facet name="footer"> In total there are #{fn:length(ProductView.products)} products. </f:facet>
 									</p:dataTable>
-								</p:tab>
-		
+	
+									<h:form >
+									<p:growl id="product" showDetail="true" sticky="true" />  
+									    <p:panel header="Add">  
+									        <h:panelGrid columns="2" cellpadding="5">  
+									            <p:outputLabel  value="Discount:" />   
+									            <p:inputText id="discount" value="#{ProductView.product.discount}" required="true" />
+									            <p:outputLabel  value="Tax:" />   
+									            <p:inputText id="tax" value="#{ProductView.product.tax}" required="true" />
+									            <p:outputLabel  value="Price:" />   
+									            <p:inputText id="saleprice" value="#{ProductView.product.salePrice}" required="true" />  
+									        </h:panelGrid>  
+									        <p:commandButton value="Save" actionListener="#{ProductView.addProduct}" update="product" />
+									        <p:commandButton value="Cancel" update="product:" /> 
+									    </p:panel>
+									  </h:form>  
+									    
+									 <h:form >   
+									<p:growl id="product" showDetail="true" sticky="true" />    
+									    <p:panel header="Remove">  
+									        <h:panelGrid columns="2" cellpadding="5">  
+									            <p:outputLabel  value="Id:" />   
+									            <p:inputText id="id" value="#{ProductView.product.id}" required="true" />
+									          
+									        </h:panelGrid>  
+									        <p:commandButton value="Save" actionListener="#{ProductView.removeProduct}" update="product" />
+									        <p:commandButton value="Cancel" update="product" /> 
+									    </p:panel>
+									   </h:form>  
+									    
+									    
+								</p:tab>		
+									
+									
 					    		<p:tab title="Shelves"> 	
-									<p:dataTable id="ShelfList" var="shelf" value="#{dtShelfView.shelves}">
+									<p:dataTable id="ShelfList" var="shelf" value="#{ShelfView.shelves}">
 								    	<f:facet name="header">	List of Shelves </f:facet>
 								    	<p:column headerText="Id">
 								        	<h:outputText value="#{shelf.id}" />
@@ -75,8 +81,21 @@
 								    	<p:column headerText="Price">
 								        	<h:outputText value="#{shelf.price}" />
 								    	</p:column>
-								    	<f:facet name="footer"> In total there are #{fn:length(dtShelfView.shelves)} shelves. </f:facet>
+								    	<f:facet name="footer"> In total there are #{fn:length(ShelfView.shelves)} shelves. </f:facet>
 									</p:dataTable>
+									
+									<p:growl id="shelf" showDetail="true" sticky="true" />  
+									    <p:panel header="Add">  
+									        <h:panelGrid columns="2" cellpadding="5">  
+									            <p:outputLabel  value="Location:" />   
+									            <p:inputText id="location" value="#{ShelfView.shelf.location}" required="true" />
+									            <p:outputLabel  value="Capacity:" />   
+									            <p:inputText id="capacity" value="#{ShelfView.shelf.capacity}" required="true" />
+									            <p:outputLabel  value="Price:" />   
+									            <p:inputText id="price" value="#{ShelfView.shelf.price}" required="true" />  
+									        </h:panelGrid>  
+									        <p:commandButton value="Save" actionListener="#{ShelfView.addShelf}" update="shelf" />  
+									    </p:panel>
 								</p:tab>
 			  				</p:tabView>
 						</h:form>	

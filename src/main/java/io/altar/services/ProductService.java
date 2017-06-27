@@ -7,13 +7,15 @@ import javax.inject.Named;
 
 import io.altar.model.Product;
 import io.altar.repository.ProductRepository;
- 
+
+
 @Named("productService")
 @RequestScoped
 
 
 public class ProductService {
-	private ProductRepository ProductList = new ProductRepository();
+//	private ProductRepository ProductList = new ProductRepository();
+	private ProductRepository ProductList = ProductRepository.getInstance();
 
 	public void addNewProduct(Product product){
 		ProductList.addToList(product);
@@ -27,8 +29,8 @@ public class ProductService {
 			
 	}
 	
-	public void removeProduct(){
-		
+	public void removeAProduct(){
+		ProductList.removeItem(ProductList.);
 	}
 	
 	public Collection<Product> getProducts(){

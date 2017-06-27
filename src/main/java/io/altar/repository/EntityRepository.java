@@ -13,14 +13,17 @@ public abstract class EntityRepository<E extends Entity>{
 	
 	private LinkedHashMap<Integer, E> entityList = new LinkedHashMap<>();
 		
-		private static Integer id = 0;
-		public static Integer getNextId(){
+		private Integer id = 0;
+		public Integer getNextId(){
 			return ++id;
 		}
 		
 		public void addToList(E e){
-			e.setId(id);
+			e.setId(getNextId());
 			entityList.put(e.getId(),e);
+//			for(E f: entityList.values()){
+//				System.out.println(f.toString());
+//			}
 		}
 		
 		public void removeItem(Integer id){

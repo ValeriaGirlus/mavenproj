@@ -1,21 +1,18 @@
 package io.altar.model;
 
-import io.altar.repository.ProductRepository;
-import io.altar.model.Entity;
-	
 public class Product extends Entity {
-		private Integer id;
+//		private Integer id;
 		private float discount;
 		private float tax;
 		private float saleprice;
-		private ProductRepository ProductRepository = new ProductRepository();
+//		private ProductRepository ProductRepository = new ProductRepository();
 		
-		public Integer getId() {
-			return id;
-		}
-		public void setId(Integer id) {
-			this.id = id;
-		}
+//		public Integer getId() {
+//			return id;
+//		}
+//		public void setId(Integer id) {
+//			this.id = id;
+//		}
 		public float getDiscount() {
 			return discount;
 		}
@@ -43,7 +40,8 @@ public class Product extends Entity {
 	
 		@Override
 		public String toString(){
-			return "Id: "+ getId() + ", Discount: " + discount + ", IVA: " + tax  + ", PVP: " + saleprice + "\n";
+//			return "Id: "+ getId() + ", Discount: " + discount + ", IVA: " + tax  + ", PVP: " + saleprice + "\n";
+			return "Id: "+ getId() + ", Discount: " + discount + ", IVA: " + tax  + ", PVP: " + saleprice;
 		}
 	}
 

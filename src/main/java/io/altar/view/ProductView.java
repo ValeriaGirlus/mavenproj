@@ -1,7 +1,9 @@
 package io.altar.view;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -11,7 +13,7 @@ import io.altar.model.Product;
 import io.altar.services.ProductService;
 
  
-@Named("dtProductView")
+@Named("ProductView")
 @RequestScoped
 public class ProductView implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -19,10 +21,14 @@ public class ProductView implements Serializable {
     @Inject
     private ProductService productService;
     
-    private Product product = new Product();
+    public List<Product> getProducts() {
+		return new ArrayList<Product>((Collection<Product>)productService.getProducts());
+	}
     
-     
-    public Product getProduct() {
+    private Product product = new Product();
+  
+
+	public Product getProduct() {
 		return product;
 	}
 
@@ -30,11 +36,16 @@ public class ProductView implements Serializable {
 		this.product = product;
 	}
 
-	public Collection<Product> getProducts() {
-        return productService.getProducts();
-    }
+//	public Collection<Product> getProducts() {
+//        return productService.getProducts();
+//    }
     
     public void addProduct(){
     	productService.addNewProduct(product);
     }
+    
+    public void removeProduct(){
+    	productService.removeAProduct();
+    }
+    
 }
