@@ -20,11 +20,15 @@ public class ProductView implements Serializable {
 
     @Inject
     private ProductService productService;
+   
+//	public Collection<Product> getProducts() {
+//		return productService.getProducts();
+//    }
     
     public List<Product> getProducts() {
 		return new ArrayList<Product>((Collection<Product>)productService.getProducts());
 	}
-    
+  
     private Product product = new Product();
   
 
@@ -35,17 +39,14 @@ public class ProductView implements Serializable {
 	public void setProduct(Product product) {
 		this.product = product;
 	}
-
-//	public Collection<Product> getProducts() {
-//        return productService.getProducts();
-//    }
     
     public void addProduct(){
     	productService.addNewProduct(product);
     }
     
     public void removeProduct(){
-    	productService.removeAProduct();
+    	productService.removeAProduct(product);
+    
     }
     
 }

@@ -17,6 +17,10 @@ public class ProductService {
 //	private ProductRepository ProductList = new ProductRepository();
 	private ProductRepository ProductList = ProductRepository.getInstance();
 
+	public Collection<Product> getProducts(){
+		return ProductList.getall();
+	}
+
 	public void addNewProduct(Product product){
 		ProductList.addToList(product);
 	}
@@ -29,12 +33,10 @@ public class ProductService {
 			
 	}
 	
-	public void removeAProduct(){
-		ProductList.removeItem(ProductList.);
+	public void removeAProduct(Product product){
+		ProductList.removeItem(product.getId());
 	}
 	
-	public Collection<Product> getProducts(){
-		return ProductList.getall();
-	}
+	
 	
 }
