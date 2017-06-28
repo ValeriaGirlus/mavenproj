@@ -15,24 +15,25 @@ public class ShelfService {
 //	private ShelfRepository ShelfList = new ShelfRepository();
 	private ShelfRepository ShelfList = ShelfRepository.getInstance();
 
+	public Collection<Shelf> getShelves(){
+		return ShelfList.getall();
+	}
 	public void addNewShelf(Shelf shelf){
 		ShelfList.addToList(shelf);
 	}
 
-	public void editShelf(){
-		
-	}
-	
 	public void consultShelf(){
 			
 	}
 	
-	public void removeShelf(){
-		
+	public void editAShelf(Shelf shelf){
+		ShelfList.editItem(shelf.getId(), shelf.getLocation(), shelf.getCapacity(), shelf.getPrice());
 	}
 	
-	public Collection<Shelf> getShelves(){
-		return ShelfList.getall();
+	public void removeAShelf(Integer id){
+		ShelfList.removeItem(id);
 	}
+	
+	
 	
 }

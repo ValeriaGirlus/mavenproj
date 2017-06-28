@@ -41,6 +41,7 @@ public class ProductView implements Serializable {
 		this.product = product;
 	} 
 	
+	//foi preciso criar esta varável pq não estava a conseguir do mesmo modo que addProduct
 	private Integer removeId;
   
 	public Integer getRemoveId() {
@@ -51,31 +52,21 @@ public class ProductView implements Serializable {
 		this.removeId = removeId;
 	}
 
-	private Integer editId;
-
-	public Integer getEditId() {
-		return editId;
-	}
-
-	public void setEditId(Integer editId) {
-		this.editId = editId;
-	}
-
 	public void addProduct(){
     	productService.addNewProduct(product);
     }
-    
-    public void editProduct(){
-    	productService.editAProduct(editId);
-    }
-    
+	
 //    public void consultProduct(){
 //    	productService.consultAProduct(product);
 //    }
-    
+
+	
+	public void editProduct(){
+	    	productService.editAProduct(product);
+	}
+
     public void removeProduct(){
     	productService.removeAProduct(removeId);
-    
     }
     
 }

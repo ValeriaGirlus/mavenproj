@@ -41,9 +41,25 @@ public class ShelfView implements Serializable {
 //        return shelfService.getShelves();
 //    }
     
+	private Integer removeId;
+	  
+	public Integer getRemoveId() {
+		return removeId;
+	}
+
+	public void setRemoveId(Integer removeId) {
+		this.removeId = removeId;
+	}
     public void addShelf(){
     	shelfService.addNewShelf(shelf);
     }
     
+	public void editShelf(){
+    	shelfService.editAShelf(shelf);
+}
     
+    public void removeShelf(){
+    	shelfService.removeAShelf(removeId);
+    
+    }
 }

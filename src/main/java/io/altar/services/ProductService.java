@@ -29,14 +29,11 @@ public class ProductService {
 //		ProductList.get(product.getId());	
 //	}
 	
-	public void editAProduct(Integer id){
-		ProductList.editItem(id);
+	public void editAProduct(Product product){
+		ProductList.editItem(product.getId(), product.getDiscount(), product.getTax(), product.getSalePrice());
 	}
 	
 	public void removeAProduct(Integer id){
 		ProductList.removeItem(id);
 	}
-	
-	
-	
 }
