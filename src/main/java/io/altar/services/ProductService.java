@@ -24,17 +24,17 @@ public class ProductService {
 	public void addNewProduct(Product product){
 		ProductList.addToList(product);
 	}
-
-	public void editProduct(){
-		
+	
+//	public void consultProduct(Product product){
+//		ProductList.get(product.getId());	
+//	}
+	
+	public void editAProduct(Integer id){
+		ProductList.editItem(id);
 	}
 	
-	public void consultProduct(){
-			
-	}
-	
-	public void removeAProduct(Product product){
-		ProductList.removeItem(product.getId());
+	public void removeAProduct(Integer id){
+		ProductList.removeItem(id);
 	}
 	
 	

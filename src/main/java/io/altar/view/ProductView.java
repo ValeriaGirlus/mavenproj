@@ -21,31 +21,60 @@ public class ProductView implements Serializable {
     @Inject
     private ProductService productService;
    
+   
 //	public Collection<Product> getProducts() {
 //		return productService.getProducts();
 //    }
-    
-    public List<Product> getProducts() {
+
+
+	public List<Product> getProducts() {
 		return new ArrayList<Product>((Collection<Product>)productService.getProducts());
 	}
   
     private Product product = new Product();
-  
-
-	public Product getProduct() {
+    
+    public Product getProduct() {
 		return product;
 	}
 
 	public void setProduct(Product product) {
 		this.product = product;
+	} 
+	
+	private Integer removeId;
+  
+	public Integer getRemoveId() {
+		return removeId;
 	}
-    
-    public void addProduct(){
+
+	public void setRemoveId(Integer removeId) {
+		this.removeId = removeId;
+	}
+
+	private Integer editId;
+
+	public Integer getEditId() {
+		return editId;
+	}
+
+	public void setEditId(Integer editId) {
+		this.editId = editId;
+	}
+
+	public void addProduct(){
     	productService.addNewProduct(product);
     }
     
+    public void editProduct(){
+    	productService.editAProduct(editId);
+    }
+    
+//    public void consultProduct(){
+//    	productService.consultAProduct(product);
+//    }
+    
     public void removeProduct(){
-    	productService.removeAProduct(product);
+    	productService.removeAProduct(removeId);
     
     }
     

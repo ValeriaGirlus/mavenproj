@@ -13,7 +13,6 @@
 		<ui:composition template="commonLayout.xhtml">
 			<ui:define name="content">
 	    			<h2></h2>
-						<h:form >
 							<p:tabView>
 								<p:tab title="Products">				
 									<p:dataTable id="ProductList" var="product" value="#{ProductView.getProducts()}">
@@ -32,7 +31,7 @@
 								    	</p:column>
 								    	<f:facet name="footer"> In total there are #{fn:length(ProductView.products)} products. </f:facet>
 									</p:dataTable>					
-									
+									<p:separator></p:separator> 
 									<h:form >
 										<p:growl id="product" showDetail="true" sticky="true" />  
 										    <p:panel header="Add">  
@@ -45,24 +44,43 @@
 										            <p:inputText id="saleprice" value="#{ProductView.product.salePrice}" required="true" />  
 										        </h:panelGrid>  
 										        <p:commandButton value="Save" actionListener="#{ProductView.addProduct}" update="product" />
+										        <p:commandButton value="Cancel" update="product" /> 
+										    </p:panel>
+									</h:form>  
+									<p:separator></p:separator> 
+									<h:form >
+										<p:growl id="product" showDetail="true" sticky="true" />  
+										    <p:panel header="Edit">
+										    	<h2>Insert the id of the product to edit</h2>
+										      	<h:panelGrid columns="2" cellpadding="5">  
+										            <p:outputLabel  value="Id:" />   
+										            <p:inputText id="id" value="#{ProductView.editId}" required="true" />
+										        </h:panelGrid>
+										        <h:panelGrid columns="2" cellpadding="5">  
+										            <p:outputLabel  value="Discount:" />   
+										            <p:inputText id="discount" value="#{ProductView.product.discount}" required="true" />
+										            <p:outputLabel  value="Tax:" />   
+										            <p:inputText id="tax" value="#{ProductView.product.tax}" required="true" />
+										            <p:outputLabel  value="Price:" />   
+										            <p:inputText id="saleprice" value="#{ProductView.product.salePrice}" required="true" />  
+										        </h:panelGrid>  
+										        <p:commandButton value="Save" actionListener="#{ProductView.editProduct}" update="product" />
 										        <p:commandButton value="Cancel" update="product:" /> 
 										    </p:panel>
-									  </h:form>  
-									 
-									    
-									 <h:form >   
+									</h:form>  
+									<p:separator></p:separator>    
+									<h:form >   
 										<p:growl id="product" showDetail="true" sticky="true" />    
 										    <p:panel header="Remove">  
 										        <h:panelGrid columns="2" cellpadding="5">  
 										            <p:outputLabel  value="Id:" />   
-										            <p:inputText id="id" value="#{ProductView.product.id}" required="true" />
-										          
+										            <p:inputText id="id" value="#{ProductView.removeId}" required="true" />
 										        </h:panelGrid>  
 										        <p:commandButton value="Save" actionListener="#{ProductView.removeProduct}" update="product" />
 										        <p:commandButton value="Cancel" update="product" /> 
 										    </p:panel>
-										   </h:form>  
-										 </p:tab>
+									</h:form>  
+								</p:tab>
 									    	
 					    		<p:tab title="Shelves"> 	
 									<p:dataTable id="ShelfList" var="shelf" value="#{ShelfView.shelves}">
@@ -96,7 +114,6 @@
 									    </p:panel>
 								</p:tab>
 			  				</p:tabView>
-						</h:form>	
 	    	</ui:define>
 		</ui:composition>
 	</h:body>
