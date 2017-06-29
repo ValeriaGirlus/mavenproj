@@ -69,4 +69,5 @@ public class ProductView implements Serializable {
     	productService.removeAProduct(removeId);
     }
     
+    
 }
