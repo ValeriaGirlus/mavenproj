@@ -12,141 +12,151 @@
 	<h:body>
 		<ui:composition template="commonLayout.xhtml">
 			<ui:define name="content">
-	    			<h2></h2>
-							<p:tabView>
-								<p:tab title="Products">				
-									<p:dataTable id="ProductList" var="product" value="#{ProductView.getProducts()}">
-								    	<f:facet name="header">	List of Products </f:facet>
-								    	<p:column headerText="Id">
-								        	<h:outputText value="#{product.id}" />
-								    	</p:column>
-								    	<p:column headerText="Discount">
-								        	<h:outputText value="#{product.discount}" />
-								    	</p:column>
-								   		<p:column headerText="Tax">
-								        	<h:outputText value="#{product.tax}" />
-								    	</p:column>
-								    	<p:column headerText="Price">
-								        	<h:outputText value="#{product.salePrice}" />
-								    	</p:column>
-								    	<f:facet name="footer"> In total there are #{fn:length(ProductView.products)} products. </f:facet>
-									</p:dataTable>					
-									<p:separator></p:separator> 
-									<h:form >
-										<p:growl id="product" showDetail="true" sticky="true" />  
-										    <p:panel header="Add">  
-										        <h:panelGrid columns="2" cellpadding="5">  
-										            <p:outputLabel  value="Discount:" />   
-										            <p:inputText id="discount" value="#{ProductView.product.discount}" required="true" />
-										            <p:outputLabel  value="Tax:" />   
-										            <p:inputText id="tax" value="#{ProductView.product.tax}" required="true" />
-										            <p:outputLabel  value="Price:" />   
-										            <p:inputText id="saleprice" value="#{ProductView.product.salePrice}" required="true" />  
-										        </h:panelGrid>  
-										        <p:commandButton value="Save" actionListener="#{ProductView.addProduct}" update="product" />
-										        <p:commandButton value="Cancel" update="product" /> 
-										    </p:panel>
-									</h:form>  
-									<p:separator></p:separator> 
-									<h:form >
-										<p:growl id="product1" showDetail="true" sticky="true" />  
-										    <p:panel header="Edit">
-										    	<h2>Insert the id of the product to edit</h2>
-										      	<h:panelGrid columns="2" cellpadding="5">  
-										            <p:outputLabel  value="Id:" />   
-										            <p:inputText id="id1" value="#{ProductView.product.id}" required="true" />
-										        </h:panelGrid>
-										        <h:panelGrid columns="2" cellpadding="5">  
-										            <p:outputLabel  value="Discount:" />   
-										            <p:inputText id="discount1" value="#{ProductView.product.discount}" required="true" />
-										            <p:outputLabel  value="Tax:" />   
-										            <p:inputText id="tax1" value="#{ProductView.product.tax}" required="true" />
-										            <p:outputLabel  value="Price:" />   
-										            <p:inputText id="saleprice1" value="#{ProductView.product.salePrice}" required="true" />  
-										        </h:panelGrid>  
-										        <p:commandButton value="Save" actionListener="#{ProductView.editProduct()}" update="product1" />
-										        <p:commandButton value="Cancel" update="product1" /> 
-										    </p:panel>
-									</h:form>  
-									<p:separator></p:separator>    
-									<h:form >   
-										<p:growl id="product2" showDetail="true" sticky="true" />    
-										    <p:panel header="Remove">  
-										        <h:panelGrid columns="2" cellpadding="5">  
-										            <p:outputLabel  value="Id:" />   
-										            <p:inputText id="id2" value="#{ProductView.removeId}" required="true" />
-										        </h:panelGrid>  
-										        <p:commandButton value="Save" actionListener="#{ProductView.removeProduct}" update="product2" />
-										        <p:commandButton value="Cancel" update="product2" /> 
-										    </p:panel>
-									</h:form>  
-								</p:tab>
-									    	
-					    		<p:tab title="Shelves"> 	
-									<p:dataTable id="ShelfList" var="shelf" value="#{ShelfView.shelves}">
-								    	<f:facet name="header">	List of Shelves </f:facet>
-								    	<p:column headerText="Id">
-								        	<h:outputText value="#{shelf.id}" />
-								    	</p:column>
-								    	<p:column headerText="Location">
-								        	<h:outputText value="#{shelf.location}" />
-								    	</p:column>
-								   		<p:column headerText="Capacity">
-								        	<h:outputText value="#{shelf.capacity}" />
-								    	</p:column>
-								    	<p:column headerText="Price">
-								        	<h:outputText value="#{shelf.price}" />
-								    	</p:column>
-								    	<f:facet name="footer"> In total there are #{fn:length(ShelfView.shelves)} shelves. </f:facet>
-									</p:dataTable>
-									<p:separator></p:separator>  
-									<h:form >
-										<p:growl id="shelf" showDetail="true" sticky="true" />  
-										    <p:panel header="Add">  
-										        <h:panelGrid columns="2" cellpadding="5">  
-										            <p:outputLabel  value="Location:" />   
-										            <p:inputText id="location" value="#{ShelfView.shelf.location}" required="true" />
-										            <p:outputLabel  value="Capacity:" />   
-										            <p:inputText id="capacity" value="#{ShelfView.shelf.capacity}" required="true" />
-										            <p:outputLabel  value="Price:" />   
-										            <p:inputText id="price" value="#{ShelfView.shelf.price}" required="true" />  
-										        </h:panelGrid>  
-										        <p:commandButton value="Save" actionListener="#{ShelfView.addShelf}" update="shelf" />  
-										    </p:panel>
-									</h:form>
-									<p:separator></p:separator> 
-									<h:form >
-										<p:growl id="shelf1" showDetail="true" sticky="true" />  
-										    <p:panel header="Edit">
-										    	<h2>Insert the id of the shelf to edit</h2>
-										      	<h:panelGrid columns="2" cellpadding="5">  
-										            <p:outputLabel  value="Id:" />   
-										            <p:inputText id="id11" value="#{ShelfView.shelf.id}" required="true" />
-										        </h:panelGrid>
-										        <h:panelGrid columns="2" cellpadding="5">  
-										            <p:outputLabel  value="Location:" />   
-										            <p:inputText id="location1" value="#{ShelfView.shelf.location}" required="true" />
-										            <p:outputLabel  value="Capacity:" />   
-										            <p:inputText id="capacity1" value="#{ShelfView.shelf.capacity}" required="true" />
-										            <p:outputLabel  value="Price:" />   
-										            <p:inputText id="price1" value="#{ShelfView.shelf.price}" required="true" />  
-										        </h:panelGrid>  
-										        <p:commandButton value="Save" actionListener="#{ShelfView.editShelf}" update="shelf1" />
-										        <p:commandButton value="Cancel" update="shelf1" /> 
-										    </p:panel>
-									</h:form>  
-									<p:separator></p:separator>  
-									<h:form >   
-										<p:growl id="shelf2" showDetail="true" sticky="true" />    
-										    <p:panel header="Remove">  
-										        <h:panelGrid columns="2" cellpadding="5">  
-										            <p:outputLabel  value="Id:" />   
-										            <p:inputText id="id" value="#{ShelfView.removeId}" required="true" />
-										        </h:panelGrid>  
-										        <p:commandButton value="Save" actionListener="#{ShelfView.removeShelf}" update="shelf2" />
-										        <p:commandButton value="Cancel" update="shelf2" /> 
-										    </p:panel>
-									</h:form>
+				<p:tabView id="tabs">
+					<p:tab title="Products">				
+						<p:dataTable id="ProductList" var="product" value="#{ProductView.getProducts()}">
+					    	<f:facet name="header">	List of Products </f:facet>
+					    	<p:column headerText="Id">
+					        	<h:outputText value="#{product.id}" />
+					    	</p:column>
+					    	<p:column headerText="Discount">
+					        	<h:outputText value="#{product.discount}" />
+					    	</p:column>
+					   		<p:column headerText="Tax">
+					        	<h:outputText value="#{product.tax}" />
+					    	</p:column>
+					    	<p:column headerText="Price">
+					        	<h:outputText value="#{product.salePrice}" />
+					    	</p:column>
+					    	<f:facet name="footer"> In total there are #{fn:length(ProductView.products)} products. </f:facet>
+						</p:dataTable>
+											
+						<p:separator></p:separator> 
+        					    
+						<h:form >
+							<p:growl id="product" showDetail="true" sticky="true" />  
+							    <p:panel header="Add">  
+							        <h:panelGrid columns="2" cellpadding="5">
+							            <p:outputLabel  value="Discount:" />   
+							            <p:inputText id="discount" value="#{ProductView.product.discount}" required="true" />
+							            <p:outputLabel  value="Tax:" />   
+							            <p:inputText id="tax" value="#{ProductView.product.tax}" required="true" />
+							            <p:outputLabel  value="Price:" />   
+							            <p:inputText id="saleprice" value="#{ProductView.product.salePrice}" required="true" />  
+							        </h:panelGrid>  
+							        <p:commandButton value="Save" actionListener="#{ProductView.addProduct}" update=":tabs:ProductList" />
+							        <p:commandButton value="Cancel" type="reset"  /> 
+							    </p:panel>
+						</h:form>
+  
+						<p:separator></p:separator>
+						 
+						<h:form >
+							<p:growl id="product1" showDetail="true" sticky="true" />  
+							    <p:panel header="Edit">
+							    	<h2>Insert the id of the product to edit</h2>
+							      	<h:panelGrid columns="2" cellpadding="5">  
+							            <p:outputLabel  value="Id:" />   
+							            <p:inputText id="id1" value="#{ProductView.product.id}" required="true" />  	
+							            <p:outputLabel  value="Discount:" />   
+							            <p:inputText id="discount1" value="#{ProductView.product.discount}" required="true" />
+							            <p:outputLabel  value="Tax:" />   
+							            <p:inputText id="tax1" value="#{ProductView.product.tax}" required="true" />
+							            <p:outputLabel  value="Price:" />   
+							            <p:inputText id="saleprice1" value="#{ProductView.product.salePrice}" required="true" />  
+							        </h:panelGrid>  
+							        <p:commandButton value="Save" actionListener="#{ProductView.editProduct}" update=":tabs:ProductList" />
+							        <p:commandButton value="Cancel" type="reset" /> 
+							    </p:panel>
+						</h:form>
+						  
+						<p:separator></p:separator>
+						    
+						<h:form >   
+							<p:growl id="product2" showDetail="true" sticky="true" />    
+							    <p:panel header="Remove">  
+							        <h:panelGrid columns="2" cellpadding="5">  
+							            <p:outputLabel  value="Id:" />   
+							            <p:inputText id="id2" value="#{ProductView.removeId}" required="true" />
+							        </h:panelGrid>  
+							        <p:commandButton value="Save" actionListener="#{ProductView.removeProduct}" update=":tabs:ProductList" />
+							        <p:commandButton value="Cancel" type="reset" /> 
+							    </p:panel>
+						</h:form>  
+					</p:tab>
+						    	
+		    		<p:tab title="Shelves"> 	
+						<p:dataTable id="ShelfList" var="shelf" value="#{ShelfView.shelves}">
+					    	<f:facet name="header">	List of Shelves </f:facet>
+					    	<p:column headerText="Id">
+					        	<h:outputText value="#{shelf.id}" />
+					    	</p:column>
+					    	<p:column headerText="Location">
+					        	<h:outputText value="#{shelf.location}" />
+					    	</p:column>
+					   		<p:column headerText="Capacity">
+					        	<h:outputText value="#{shelf.capacity}" />
+					    	</p:column>
+					    	<p:column headerText="Price">
+					        	<h:outputText value="#{shelf.price}" />
+					    	</p:column>
+					    	<f:facet name="footer"> In total there are #{fn:length(ShelfView.shelves)} shelves. </f:facet>
+						</p:dataTable>
+						
+						<p:separator></p:separator> 
+						 
+						<h:form >
+							<p:growl id="shelf" showDetail="true" sticky="true" />  
+							    <p:panel header="Add">  
+							        <h:panelGrid columns="2" cellpadding="5">  
+							            <p:outputLabel  value="Location:" />   
+							            <p:inputText id="location" value="#{ShelfView.shelf.location}" required="true" />
+							            <p:outputLabel  value="Capacity:" />   
+							            <p:inputText id="capacity" value="#{ShelfView.shelf.capacity}" required="true" />
+							            <p:outputLabel  value="Price:" />   
+							            <p:inputText id="price" value="#{ShelfView.shelf.price}" required="true" />  
+							        </h:panelGrid>  
+							        <p:commandButton value="Save" actionListener="#{ShelfView.addShelf}" update=":tabs:ShelfList" />
+							        <p:commandButton value="Cancel" type="reset" />  
+							    </p:panel>
+						</h:form>
+						
+						<p:separator></p:separator> 
+						
+						<h:form >
+							<p:growl id="shelf1" showDetail="true" sticky="true" />  
+							    <p:panel header="Edit">
+							    	<h2>Insert the id of the shelf to edit</h2>
+							      	<h:panelGrid columns="2" cellpadding="5">  
+							            <p:outputLabel  value="Id:" />   
+							            <p:inputText id="id11" value="#{ShelfView.shelf.id}" required="true" />
+							        </h:panelGrid>
+							        <h:panelGrid columns="2" cellpadding="5">  
+							            <p:outputLabel  value="Location:" />   
+							            <p:inputText id="location1" value="#{ShelfView.shelf.location}" required="true" />
+							            <p:outputLabel  value="Capacity:" />   
+							            <p:inputText id="capacity1" value="#{ShelfView.shelf.capacity}" required="true" />
+							            <p:outputLabel  value="Price:" />   
+							            <p:inputText id="price1" value="#{ShelfView.shelf.price}" required="true" />  
+							        </h:panelGrid>  
+							        <p:commandButton value="Save" actionListener="#{ShelfView.editShelf}" update=":tabs:ShelfList" />
+							        <p:commandButton value="Cancel" type="reset"/> 
+							    </p:panel>
+						</h:form> 
+						 
+						<p:separator></p:separator>
+						  
+						<h:form >   
+							<p:growl id="shelf2" showDetail="true" sticky="true" />    
+							    <p:panel header="Remove">  
+							        <h:panelGrid columns="2" cellpadding="5">  
+							            <p:outputLabel  value="Id:" />   
+							            <p:inputText id="id" value="#{ShelfView.removeId}" required="true" />
+							        </h:panelGrid>  
+							        <p:commandButton value="Save" actionListener="#{ShelfView.removeShelf}" update=":tabs:ShelfList" />
+							        <p:commandButton value="Cancel" type="reset"/> 
+							    </p:panel>
+						</h:form>
 					</p:tab>
 			  	</p:tabView>
 	    	</ui:define>
@@ -154,4 +164,3 @@
 	</h:body>
 </html>
 	
-	<!-- https://www.mkyong.com/jsf2/jsf-2-templating-with-facelets-example/ -->
