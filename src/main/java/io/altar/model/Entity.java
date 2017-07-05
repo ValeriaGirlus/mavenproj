@@ -11,7 +11,6 @@ public class Entity {
 		this.id = id;
 	}
 	
-	//interface??
 	public Entity(){
 	}
 	

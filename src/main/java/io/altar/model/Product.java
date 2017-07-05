@@ -1,5 +1,6 @@
 package io.altar.model;
 
+
 public class Product extends Entity {
 //		private Integer id;
 		private float discount;

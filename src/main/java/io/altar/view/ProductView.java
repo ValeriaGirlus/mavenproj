@@ -15,6 +15,7 @@ import io.altar.services.ProductService;
  
 @Named("ProductView")
 @RequestScoped
+
 public class ProductView implements Serializable {
 	private static final long serialVersionUID = 1L;
 
