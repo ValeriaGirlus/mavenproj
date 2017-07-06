@@ -13,25 +13,45 @@ public class ProductRepository extends EntityRepository<Product>{
 		return INSTANCE;
 	}
 	
+	
+//	@Transactional
+//	public void addAll(Collection<Product> products) {
+//		for (Product product : products) {
+//			productDao.persist(product);
+//		}
+//	}
+//
+//	@Transactional(readOnly = true)
+//	public List<Product> listAll() {
+//		return productDao.findAll();
+//
+//	}
+	
+	
+	
+	
+	
+	
+	
 //	public ProductRepository(){};
 	
-	public void editItem(Integer id, float discount, float tax, float saleprice){
-		
-		((Product) get(id)).setId(id);
-		((Product) get(id)).setDiscount(discount);
-		((Product) get(id)).setTax(tax);
-		((Product) get(id)).setSalePrice(saleprice);
-	}
-	
-	public void editdiscount(Integer id, float discount){
-		((Product) get(id)).setDiscount(discount);
-	}
-	
-	public void edittax(Integer id, float tax){
-		((Product) get(id)).setTax(tax);
-	}
-	
-	public void editsaleprice(Integer id, float saleprice){
-		((Product) get(id)).setSalePrice(saleprice);
-	}
+//	public void editItem(Integer id, float discount, float tax, float saleprice){
+//		
+//		((Product) get(id)).setId(id);
+//		((Product) get(id)).setDiscount(discount);
+//		((Product) get(id)).setTax(tax);
+//		((Product) get(id)).setSalePrice(saleprice);
+//	}
+//	
+//	public void editdiscount(Integer id, float discount){
+//		((Product) get(id)).setDiscount(discount);
+//	}
+//	
+//	public void edittax(Integer id, float tax){
+//		((Product) get(id)).setTax(tax);
+//	}
+//	
+//	public void editsaleprice(Integer id, float saleprice){
+//		((Product) get(id)).setSalePrice(saleprice);
+//	}
 }
