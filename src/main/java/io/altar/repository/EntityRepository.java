@@ -5,9 +5,10 @@ import java.util.LinkedHashMap;
 import java.util.Set;
 
 import io.altar.model.Entity;
+import io.altar.model.EntityModel;
 
 
-public abstract class EntityRepository<E extends Entity>{
+public abstract class EntityRepository<E extends EntityModel>{
 
 	
 	

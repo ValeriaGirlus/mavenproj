@@ -1,20 +1,24 @@
 package io.altar.model;
 
+import java.io.Serializable;
 
-public class Product extends Entity {
-//		private Integer id;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="Products")
+public class Product extends EntityModel implements Serializable{
+
+		@Column(name="Discount")
 		private float discount;
-		private float tax;
-		private float saleprice;
-//		private ProductRepository ProductRepository = new ProductRepository();
-
 		
-//		public Integer getId() {
-//			return id;
-//		}
-//		public void setId(Integer id) {
-//			this.id = id;
-//		}
+		@Column(name="Tax")
+		private float tax;
+		
+		@Column(name="Price")
+		private float saleprice;
+
 		public float getDiscount() {
 			return discount;
 		}
@@ -41,8 +45,8 @@ public class Product extends Entity {
 	
 		@Override
 		public String toString(){
-//			return "Id: "+ getId() + ", Discount: " + discount + ", IVA: " + tax  + ", PVP: " + saleprice + "\n";
-			return "Id: "+ getId() + ", Discount: " + discount + ", IVA: " + tax  + ", PVP: " + saleprice;
+		// return "Id: "+ getId() + ", Discount: " + discount + ", IVA: " + tax  + ", PVP: " + salePrice;
+			return String.format("Product [Id = %d, Discount = %f, Tax = %f, Price = %f]", getId(), discount, tax, saleprice);
 		}
 	}
 

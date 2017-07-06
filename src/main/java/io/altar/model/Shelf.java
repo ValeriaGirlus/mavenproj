@@ -1,21 +1,25 @@
 package io.altar.model;
 
-import io.altar.repository.ShelfRepository;
-import io.altar.model.Entity;
+import java.io.Serializable;
 
-public class Shelf extends Entity{
-//	private int shelfId;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+
+@Entity
+@Table(name="Shelves")
+public class Shelf extends EntityModel implements Serializable{
+
+	@Column(name="Location")
 	private int location;
-	private int capacity;
-	private float price;
-//	private ShelfRepository ShelfRepository = new ShelfRepository();
 	
-//	public int getShelfId() {
-//		return shelfId;
-//	}
-//	public void setShelfId(int shelfId) {
-//		this.shelfId = shelfId;
-//	}
+	@Column(name="Capacity")
+	private int capacity;
+	
+	@Column(name="Price")
+	private float price;
+
 	
 	public int getLocation() {
 		return location;
@@ -37,15 +41,12 @@ public class Shelf extends Entity{
 	}
 	
 	public Shelf() {
-//		this.shelfId = shelfId;
-//		this.location = location;
-//		this.capacity = capacity;
-//		this.price = price;
-//		ShelfRepository.addToList(this);
+
 	}
 	
 	@Override
 	public String toString(){
-		return "Id: "+ getId() + ", Location: " + location + ", Capacity: " + capacity  + ", Price: " + price;
+//		return "Id: "+ getId() + ", Location: " + location + ", Capacity: " + capacity  + ", Price: " + price;
+		return String.format("Shelf [Id = %d, Location = %d, Capacity = %d, Price = %f]", getId(), location, capacity, price);
 	}
 }
