@@ -1,6 +1,5 @@
 package io.altar.repository;
 
-import javax.annotation.Resource;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
@@ -15,11 +14,11 @@ public abstract class EntityRepository<E extends EntityModel>{
 	@PersistenceContext(unitName = "database")
 	private EntityManager em;
 	
-	public EntityManager getDetabase(){
+	public EntityManager getDatabase(){
 		return em;
 	}
 	
-	@Resource
+	
 	private UserTransaction utx;
 	
 	
@@ -39,9 +38,6 @@ public abstract class EntityRepository<E extends EntityModel>{
 	}
 	
 }	
-	
-	
-
 
 	
 //	private LinkedHashMap<Integer, E> entityList = new LinkedHashMap<>();

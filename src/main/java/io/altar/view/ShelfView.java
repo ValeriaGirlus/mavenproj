@@ -9,8 +9,8 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-
 import io.altar.model.Shelf;
+import io.altar.repository.ShelfRepository;
 import io.altar.services.ShelfService;
 
  
@@ -23,7 +23,7 @@ public class ShelfView implements Serializable {
     private ShelfService shelfService;
     
     public List<Shelf> getShelves() {
-		return new ArrayList<Shelf>((Collection<Shelf>)shelfService.getShelves());
+		return new ArrayList<Shelf>((Collection<Shelf>)shelfService.getShelfList());
 	}
     
     private Shelf shelf = new Shelf();
@@ -51,15 +51,17 @@ public class ShelfView implements Serializable {
 		this.removeId = removeId;
 	}
     public void addShelf(){
-    	shelfService.addNewShelf(shelf);
+//    	shelfService.addNewShelf(shelf);
+   
     }
     
 	public void editShelf(){
-    	shelfService.editAShelf(shelf);
+//    	shelfService.editAShelf(shelf);
+	
 }
     
     public void removeShelf(){
-    	shelfService.removeAShelf(removeId);
+//    	shelfService.removeAShelf(removeId);
     
     }
 }

@@ -12,6 +12,7 @@ import javax.inject.Named;
 import io.altar.model.Product;
 import io.altar.services.ProductService;
 
+
  
 @Named("ProductView")
 @RequestScoped
@@ -22,16 +23,16 @@ public class ProductView implements Serializable {
     @Inject
     private ProductService productService;
    
-   
-//	public Collection<Product> getProducts() {
-//		return productService.getProducts();
-//    }
-
 
 	public List<Product> getProducts() {
-		return new ArrayList<Product>((Collection<Product>)productService.getProducts());
+//		return new ArrayList<Product>((Collection<Product>)productService.getProductList());
+		return productService.showEntity(productService.getProductList());
 	}
-  
+	
+ //	public Collection<Product> getProducts() {
+//		return productService.getProducts();
+//    }
+	
     private Product product = new Product();
     
     public Product getProduct() {
@@ -54,20 +55,23 @@ public class ProductView implements Serializable {
 	}
 
 	public void addProduct(){
-    	productService.addNewProduct(product);
+//    	productService.addNewProduct(product);
+		productService.addItem(productService.getProductList(), product);
     }
 	
 //    public void consultProduct(){
 //    	productService.consultAProduct(product);
 //    }
 
-	
 	public void editProduct(){
-	    	productService.editAProduct(product);
+//	    	productService.editAProduct(product);
+//		productService.editItem(productService.getProductList(), product);
+		
 	}
 
     public void removeProduct(){
-    	productService.removeAProduct(removeId);
+//    	productService.removeAProduct(removeId);
+//    	productService.removeItem(productService.getProductList(), product);
     }
     
     
